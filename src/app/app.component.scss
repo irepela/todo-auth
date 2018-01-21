@@ -1,0 +1,29 @@
+
+body {
+  margin: 0;
+}
+
+section {
+  padding: 1em;
+  font-family: Arial, Helvetica, sans-serif;
+
+  .title {
+    h1 {
+      margin-top: 0;
+    }
+  }
+
+  .navigation {
+    text-align: right;
+    border-top: 1px solid #ccc;
+
+    a {
+      display: inline-block;
+      padding: 10px;
+    }
+  }
+}
+
+.input-group-btn button {
+  height: 34px;
+}

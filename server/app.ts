@@ -11,7 +11,7 @@ app.use(compress());
 
 const root = path.resolve(__dirname, '../');
 
-app.use(serveStatic(path.resolve(root, 'todo-list')));
+app.use(serveStatic(path.resolve(root, 'client')));
 app.listen(3000, () => console.log('server started 3000'));
 
 export default app;
