@@ -13,5 +13,17 @@ module.exports = {
   },
   resolve: {
     extensions: ["*", ".ts", ".js"]
+  },
+  module: {
+    rules: [
+      {
+        test: /exception|user\.ts$/,
+        loader: 'ts-loader'
+      },
+      {
+        test: /\.node$/,
+        loader: "node-loader"
+      }
+      ]
   }
 };
