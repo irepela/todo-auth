@@ -1,4 +1,4 @@
-import {Exception} from '../common/exception';
+import {Exception} from './exception';
 
 export default async (ctx, next) => {
   try {
