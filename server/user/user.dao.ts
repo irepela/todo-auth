@@ -3,10 +3,16 @@ import * as crypto from 'crypto';
 
 const Schema = mongoose.Schema;
 const userSchema = new Schema({
-    email: String,
+    email: {
+      type: String,
+      unique: 'This email already exists'
+    },
     passwordHash: String,
     salt: String,
-    name: String
+    username: {
+      type: String,
+      unique: 'This username already exists'
+    }
   },
   {
     timestamps: true
@@ -36,4 +42,4 @@ userSchema.methods.checkPassword = (password) => {
   return (crypto.pbkdf2Sync(password, this.salt, 1, 128, 'sha1') === this.passwordHash);
 };
 
-const User = mongoose.model('User', userSchema);
+export const User = mongoose.model('User', userSchema);
