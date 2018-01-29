@@ -1,7 +1,6 @@
 import koa from 'koa';
 import compress from 'koa-compress';
 import logger from 'koa-logger';
-import passport from 'koa-passport';
 import exceptionHandler from './exception-handler.middleware';
 import {routes} from './routes/routes';
 import bodyParser from 'koa-bodyparser';
