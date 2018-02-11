@@ -16,7 +16,8 @@
     "koa-cors": "0.0.16",
     "bcryptjs": "2.4.3",
     "jsonwebtoken": "8.1.1",
-    "mongoose": "5.0.4"
+    "mongoose": "5.0.4",
+    "consul": "0.30.0"
   },
   "devDependencies": {
     "@types/node": "9.4.5",
