@@ -10,7 +10,8 @@ const userSchema = new Schema({
     username: {
       type: String,
       unique: 'This username already exists'
-    }
+    },
+    todos: Array
   },
   {
     timestamps: true

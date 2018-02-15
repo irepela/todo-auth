@@ -36,10 +36,46 @@ router.post('/authenticate', async(ctx, next) => {
       id: userInDb.id,
       username: userInDb.username,
       email: userInDb.email,
+      todos: userInDb.todos,
       token: jwt.sign({sub: userInDb.id}, 'secret', {expiresIn: '1h'})
     };
   }
 });
+
+router.post('/addTodo', async(ctx, next) => {
+  const updatedResult = await User.findOneAndUpdate(
+     {username: ctx.request.body.username},
+     {$push: {todos: ctx.request.body.todo}},
+     {new: true});
+  ctx.body = {
+    username: ctx.request.body.username,
+    todos: updatedResult.todos
+  }
+});
+
+router.post('/toggleTodo', async(ctx, next) => {
+  const title = ctx.request.body.todo.title;
+  const updatedResult = await User.findOneAndUpdate(
+    {'username': ctx.request.body.username, 'todos.title': title},
+    {$set: {'todos.$.complete': ctx.request.body.todo.complete}},
+    {new: true});
+  ctx.body = {
+    username: ctx.request.body.username,
+    todos: updatedResult.todos
+  }
+});
+
+router.post('/deleteTodo', async(ctx, next) => {
+  const updatedResult = await User.findOneAndUpdate(
+    {username: ctx.request.body.username},
+    {$pull: {todos: {id: ctx.request.body.todoId}}},
+    {new: true});
+  ctx.body = {
+    username: ctx.request.body.username,
+    todos: updatedResult.todos
+  }
+});
+
 
 export function routes() {
   return router.routes();
