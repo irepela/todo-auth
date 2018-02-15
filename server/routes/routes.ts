@@ -76,6 +76,15 @@ router.post('/deleteTodo', async(ctx, next) => {
   }
 });
 
+router.get('/getTodos/:username', async(ctx, next) => {
+  console.log(ctx.params.username);
+  const userInDb = await User.findOne({username: ctx.params.username});
+    // Sign and return token
+    ctx.body = {
+      todos: userInDb.todos
+    };
+});
+
 
 export function routes() {
   return router.routes();
